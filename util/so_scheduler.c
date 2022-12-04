@@ -1,4 +1,5 @@
 #include <pthread.h>
+#include <semaphore.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -9,9 +10,9 @@
 static unsigned int timeq;
 static unsigned int io_count;
 static unsigned int initialized = 0;
-static unsigned int useless = 0;
-static tcb_pqueue_t *ready;
+static tcb_pqueue_t *pqueue;
 static tcb_t *running;
+static sem_t *end;
 
 DECL_PREFIX int so_init(unsigned int time_quantum, unsigned int io) {
     if (io > SO_MAX_NUM_EVENTS || time_quantum < 1 || initialized == 1) {
@@ -21,7 +22,7 @@ DECL_PREFIX int so_init(unsigned int time_quantum, unsigned int io) {
     io_count = io;
     initialized = 1;
 
-    ready = tcb_pqueue_init();
+    pqueue = tcb_pqueue_init();
     running = NULL;
 
     return 0;
@@ -53,10 +54,10 @@ DECL_PREFIX int so_signal(unsigned int io) {
 }
 
 DECL_PREFIX void so_exec(void) {
-    useless++;
+
 }
 
 DECL_PREFIX void so_end(void) {
-    tcb_pqueue_free(ready);
+    tcb_pqueue_free(pqueue);
     initialized = 0;
 }
