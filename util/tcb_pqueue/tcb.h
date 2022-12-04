@@ -1,5 +1,5 @@
-#ifndef tcb_H_
-#define tcb_H_
+#ifndef TCB_H_
+#define TCB_H_
 
 #include <pthread.h>
 #include <semaphore.h>
@@ -19,7 +19,8 @@ struct tcb_t {
     so_handler *func; // function that the thread runs
 	unsigned int state; // state of thread -> value 0..4
     unsigned int time; // how much time is left for this thread
-    sem_t run; // semaphore which tells this thread to wait or not
+    unsigned int io_index; // index of io that thread is waiting for
+    sem_t sem; // semaphore which tells this thread to wait or not
 };
 
-#endif /* tcb_H_ */
+#endif /* TCB_H_ */

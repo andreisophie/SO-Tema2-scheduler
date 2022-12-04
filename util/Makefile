@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -fPIC -Wall
-LDFLAGS = 
+CFLAGS = -fPIC -Wall -g
+LDFLAGS = -g
 
 .PHONY: build
 build: libscheduler.so
@@ -11,10 +11,10 @@ libscheduler.so: scheduler.o pqueue.o llist.o
 scheduler.o: so_scheduler.c
 	$(CC) $(CFLAGS) -o $@ -c $^
 
-pqueue.o: TCB_pqueue/TCB_pqueue.c
+pqueue.o: tcb_pqueue/tcb_pqueue.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-llist.o: TCB_pqueue/TCB_llist.c
+llist.o: tcb_pqueue/tcb_llist.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 .PHONY: clean

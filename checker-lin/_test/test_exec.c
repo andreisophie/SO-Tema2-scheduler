@@ -95,7 +95,7 @@ static void test_sched_handler_13_1(unsigned int dummy)
 
 	/* allow the other thread to init */
 	sched_yield();
-
+	
 	/* I should continue running */
 	SO_TEST_AND_SET(test_tid_13_1, test_tid_13_1);
 	so_exec();

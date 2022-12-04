@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <semaphore.h>
 
 #include "tcb_llist.h"
 #include "tcb.h"
@@ -31,6 +32,8 @@ int tcb_list_add_last(tcb_list_t *list, tcb_t *data) {
         list->tail = list->tail->next;
     }
 
+    list->size++;
+
     return 0;
 }
 
@@ -48,7 +51,9 @@ tcb_t *tcb_list_remove_first(tcb_list_t *list) {
 
     tcb_t *removed_tcb = removed_node->data;
 
-    free(removed_tcb);
+    free(removed_node);
+
+    list->size--;
 
     return removed_tcb;
 }
@@ -70,6 +75,7 @@ void tcb_list_free(tcb_list_t *list) {
 
     while (current_node) {
         next_node = current_node->next;
+        sem_destroy(&(current_node->data->sem));
         free(current_node->data);
         free(current_node);
         current_node = next_node;

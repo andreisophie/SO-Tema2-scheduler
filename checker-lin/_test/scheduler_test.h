@@ -42,6 +42,7 @@ extern void test_sched_21(void);
 extern void test_sched_22(void);
 
 /* debugging macro */
+#define SO_VERBOSE_ERROR
 #ifdef SO_VERBOSE_ERROR
 #define so_error(msg, ...) fprintf(stderr, "ERR: " msg "\n", ##__VA_ARGS__)
 #else
