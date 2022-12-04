@@ -11,7 +11,7 @@
 #include <string.h>
 
 /*
- * 12) Test exec no preemption
+ * 11) Test exec no preemption
  *
  * tests if the scheduler properly runs exec without preemption
  */
@@ -55,7 +55,7 @@ void test_sched_12(void)
 }
 
 /*
- * 13) Test exec preemption
+ * 12) Test exec preemption
  *
  * tests if the scheduler properly preempts a task
  */
@@ -128,7 +128,7 @@ void test_sched_13(void)
 }
 
 /*
- * 14) Test exec multiple
+ * 13) Test exec multiple
  *
  * tests if the scheduler properly preempts a task after a different one ends
  */
@@ -224,7 +224,7 @@ void test_sched_14(void)
 #undef SO_TEST_AND_SET
 
 /*
- * 15) Test exec priority
+ * 14) Test exec priority
  *
  * tests if the scheduler properly preempts a task according to priorities
  */
@@ -444,7 +444,7 @@ static void test_sched_handler(unsigned int priority)
 }
 
 /*
- * 16) Test round robin (exec_time < quantum)
+ * 15) Test round robin (exec_time < quantum)
  *
  * tests if the scheduler properly schedules the same priority task
  */
@@ -479,7 +479,7 @@ void test_sched_16(void)
 }
 
 /*
- * 17) Test round robin (exec_time > quantum)
+ * 16) Test round robin (exec_time > quantum)
  *
  * tests if the scheduler properly schedules the same priority task
  */
@@ -511,7 +511,7 @@ void test_sched_17(void)
 }
 
 /*
- * 18) Test round robin
+ * 17) Test round robin
  *
  * tests if the scheduler properly preempts a task according to priorities
  */

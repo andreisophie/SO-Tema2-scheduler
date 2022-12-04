@@ -23,7 +23,7 @@ static unsigned int exec_priority;
 static unsigned int test_exec_status = SO_TEST_FAIL;
 
 /*
- * 19) Test IO devices
+ * 18) Test IO devices
  *
  * tests if the scheduler properly uses the IO devices
  */
@@ -68,7 +68,7 @@ test:
 }
 
 /*
- * 20) Test IO schedule
+ * 19) Test IO schedule
  *
  * tests if the scheduler properly handles IO devices
  */
@@ -127,7 +127,7 @@ void test_sched_20(void)
 }
 
 /*
- * 21) Test priorities and IO
+ * 20) Test priorities and IO
  *
  * tests if the scheduler properly handles IO devices and preemption
  */
@@ -233,7 +233,7 @@ void test_sched_21(void)
 #undef FAIL_IF_NOT_PRIO
 
 /*
- * 22) Test priorities and IO (stress test)
+ * 21) Test priorities and IO (stress test)
  *
  * tests if the scheduler properly handles IO devices and preemption
  */

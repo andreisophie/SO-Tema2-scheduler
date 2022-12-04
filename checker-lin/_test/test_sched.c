@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 /*
- * 1) Test init params
+ * 00) Test init params
  *
  * tests if the init parameters are properly checked
  */
@@ -36,7 +36,7 @@ test:
 }
 
 /*
- * 2) Test init
+ * 01) Test init
  *
  * tests if init is properly returns the correct value
  */
@@ -66,7 +66,7 @@ test:
 }
 
 /*
- * 3) Test double init
+ * 02) Test double init
  *
  * tests if the scheduler can be initiated two times
  */
@@ -91,7 +91,7 @@ test:
 }
 
 /*
- * 4) Test reinit
+ * 03) Test reinit
  *
  * tests if the scheduler can be initiated after deletion
  */
@@ -119,7 +119,7 @@ test:
 }
 
 /*
- * 5) Test end before init
+ * 04) Test end before init
  *
  * tests if it is safe to call end before init
  */
@@ -142,7 +142,7 @@ test:
 }
 
 /*
- * 6) Test fork params
+ * 05) Test fork params
  *
  * tests scheduler fork parameters
  */
@@ -178,7 +178,7 @@ test:
 }
 
 /*
- * 7) Test fork handler
+ * 06) Test fork handler
  *
  * tests if the scheduler runs the handler
  */
@@ -211,7 +211,7 @@ test:
 }
 
 /*
- * 8) Test fork priority
+ * 07) Test fork priority
  *
  * tests if the scheduler runs the handler
  */
@@ -245,7 +245,7 @@ test:
 }
 
 /*
- * 9) Test fork thread id
+ * 08) Test fork thread id
  *
  * tests if fork creates a new thread
  */
@@ -281,7 +281,7 @@ test:
 }
 
 /*
- * 10) Test multiple fork
+ * 09) Test multiple fork
  *
  * tests if the scheduler runs each fork
  */
@@ -320,7 +320,7 @@ test:
 }
 
 /*
- * 11) Test multiple fork thread ids
+ * 10) Test multiple fork thread ids
  *
  * tests if the scheduler runs each fork with a different id
  */
