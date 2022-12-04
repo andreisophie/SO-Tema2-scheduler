@@ -7,7 +7,7 @@
 #include "tcb_pqueue/tcb.h"
 #include "tcb_pqueue/tcb_pqueue.h"
 
-#define CAPACITY 100
+#define CAPACITY 10000
 
 static unsigned int timeq;
 static unsigned int io_count;
@@ -16,6 +16,7 @@ static tcb_pqueue_t *pqueue;
 static unsigned int total_threads = 0;
 static tcb_t *all[CAPACITY];
 static tcb_t *running;
+static tcb_list_t *waiting;
 
 void schedule() {
     // if there is no thread running
@@ -96,6 +97,7 @@ DECL_PREFIX int so_init(unsigned int time_quantum, unsigned int io) {
     initialized = 1;
 
     pqueue = tcb_pqueue_init();
+    waiting = tcb_list_create();
     running = NULL;
 
     return 0;
@@ -124,12 +126,13 @@ DECL_PREFIX tid_t so_fork(so_handler *func, unsigned int priority) {
 
     tcb_t *current_running = running;
 
-    printf("fork\n");
+    if (forked) {
+        current_running->time--;
+    }
 
     schedule();
 
     if (forked) {
-        current_running->time--;
         sem_wait(&(current_running->sem));
     }
 
@@ -139,18 +142,47 @@ DECL_PREFIX tid_t so_fork(so_handler *func, unsigned int priority) {
 }
 
 DECL_PREFIX int so_wait(unsigned int io) {
+    if (io >= io_count || io < 0) {
+        return -1;
+    }
 
+    running->state = WAITING;
+    running->io_index = io;
+
+    tcb_list_add_last(waiting, running);
+
+    schedule();
+
+    sem_wait(&(running->sem));
+
+    return 0;
 }
 
 DECL_PREFIX int so_signal(unsigned int io) {
+    if (io >= io_count || io < 0) {
+        return -1;
+    }
 
+    unsigned int nr_waiting = tcb_list_size(waiting);
+    unsigned int nr_woken = 0;
+    tcb_t *waiting_thread;
+    for (int i = 0; i < nr_waiting; i++) {
+        waiting_thread = tcb_list_remove_first(waiting);
+        if (waiting_thread->io_index == io) {
+            waiting_thread->state = READY;
+            tcb_pqueue_enqueue(pqueue, waiting_thread, waiting_thread->prio);
+            nr_woken++;
+        } else {
+            tcb_list_add_last(waiting, waiting_thread);
+        }
+    }
+
+    return nr_woken;
 }
 
 DECL_PREFIX void so_exec(void) {
     tcb_t *current_running = running;
     running->time--;
-
-    printf("exec\n");
 
     schedule();
 
@@ -166,6 +198,7 @@ DECL_PREFIX void so_end(void) {
         }
         // free priority queue
         tcb_pqueue_free(pqueue);
+        tcb_list_free(waiting);
         initialized = 0;
     }
 }
