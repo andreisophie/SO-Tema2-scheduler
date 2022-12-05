@@ -146,6 +146,8 @@ DECL_PREFIX int so_wait(unsigned int io) {
         return -1;
     }
 
+    tcb_t *current_running = running;
+
     running->state = WAITING;
     running->io_index = io;
 
@@ -153,7 +155,7 @@ DECL_PREFIX int so_wait(unsigned int io) {
 
     schedule();
 
-    sem_wait(&(running->sem));
+    sem_wait(&(current_running->sem));
 
     return 0;
 }
@@ -176,6 +178,14 @@ DECL_PREFIX int so_signal(unsigned int io) {
             tcb_list_add_last(waiting, waiting_thread);
         }
     }
+
+    running->time--;
+
+    tcb_t *current_running = running;
+
+    schedule();
+
+    sem_wait(&(current_running->sem));
 
     return nr_woken;
 }

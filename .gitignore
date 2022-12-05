@@ -4,3 +4,5 @@ util/libscheduler.so
 util/*.o
 .vscode/settings.json
 checker-lin/out.txt
+checker-lin/results.txt
+util/checkpatch.pl
