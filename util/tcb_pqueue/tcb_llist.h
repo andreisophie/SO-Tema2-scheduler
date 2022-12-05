@@ -4,20 +4,20 @@
 #include "tcb.h"
 
 typedef struct tcb_node_t tcb_node_t;
-struct tcb_node_t{
-    tcb_t *data;
-    tcb_node_t *next;
+struct tcb_node_t {
+	tcb_t *data;
+	tcb_node_t *next;
 };
 
 typedef struct tcb_list_t tcb_list_t;
-struct tcb_list_t{
-    tcb_node_t *head;
-    tcb_node_t *tail;
-    unsigned int size;
+struct tcb_list_t {
+	tcb_node_t *head;
+	tcb_node_t *tail;
+	unsigned int size;
 };
 
 // creates a new tcb_list_t struct
-tcb_list_t *tcb_list_create();
+tcb_list_t *tcb_list_create(void);
 
 // adds a new element into the list, at the end
 int tcb_list_add_last(tcb_list_t *list, tcb_t *data);

@@ -5,14 +5,14 @@
 #include "tcb_llist.h"
 #include "../so_scheduler.h"
 
-#define PQUEUE_CAPACITY SO_MAX_PRIO + 1
+#define PQUEUE_CAPACITY (SO_MAX_PRIO + 1)
 
 typedef struct {
-    tcb_list_t *lists[PQUEUE_CAPACITY];
-    unsigned int max_prio;
+	tcb_list_t *lists[PQUEUE_CAPACITY];
+	unsigned int max_prio;
 } tcb_pqueue_t;
 
-tcb_pqueue_t *tcb_pqueue_init();
+tcb_pqueue_t *tcb_pqueue_init(void);
 
 int tcb_pqueue_enqueue(tcb_pqueue_t *pqueue, tcb_t *data, unsigned int prio);
 
