@@ -49,4 +49,4 @@ Tema mi s-a parut deosebit de misto, insa are anumite defecte care o fac frustra
 
 ### Last words
 
-Materia de SO este de departe cea mai interesanta si misto din semestrul acesta; de altfel, am participat la hackathon-ul de SO din semestrul acesta si mi-a placut la nebunie ceea ce a codat. De asemenea, cerintele erau explicate clar si concis, cu simt de raspundere, ca dovada ca se poate ca cerintele la aceasta materie sa fie clare si temele, placute.
+Materia de SO este de departe cea mai interesanta si misto din semestrul acesta; de altfel, am participat la hackathon-ul de SO si mi-a placut la nebunie ceea ce am codat. De asemenea, cerintele erau explicate clar si concis, cu simt de raspundere, ca dovada ca se poate ca cerintele la aceasta materie sa fie clare si temele, placute.
