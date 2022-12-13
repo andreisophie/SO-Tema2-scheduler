@@ -38,10 +38,10 @@ La intrarea in functia schedule, toate thread-urile le consider blocate (asezate
 
 Tema mi s-a parut deosebit de misto, insa are anumite defecte care o fac frustranta pentru cei care o rezolva. Unele probleme pe care le-am gasit si imbunatatiri pe care le sugerez le prezint mai departe:
 
-- **explicarea cerintei lasa de dorit**: dupa ce am terminat de citit cerinta nu imi era deloc clar ce ar trebui sa fac, de unde ar trebui sa incep, fiindca nu intelegeam cum se doreste ca mecanismul pe care il implementez interactioneaza cu exteriorul
+- **explicarea cerintei lasa de dorit**: dupa ce am terminat de citit cerinta nu imi era deloc clar ce ar trebui sa fac, de unde ar trebui sa incep, fiindca nu intelegeam cum se doreste ca mecanismul pe care il implementez sa interactioneze cu exteriorul
     - in acest caz, exteriorul este checker-ul si cred ca oarecare detalieri despre modul sau de functionare (documentatie) ar ajuta foarte mult in rezolvarea acestei probleme
     - precizari pe care le-as gasi relevante si utile:
-        - handler-urile noilor thread-uri vor apela inapoi functiile din api-ul construit de mine, iar numalul acestor apeluri este metrica (cuanta de timp) dupa care decid cat timp ruleaza un thread; nu am acces si nici nu ma intereseaza alte instructiuni in afara apelurilor de functii din libraria mea
+        - handler-urile noilor thread-uri vor apela inapoi functiile din api-ul construit de mine, iar numarul acestor apeluri este metrica (cuanta de timp) dupa care decid cat timp ruleaza un thread; nu am acces si nici nu ma intereseaza alte instructiuni in afara apelurilor de functii din libraria mea
         - cateva explicatii despre fisierele de test (functiile care vor rula pe thread-uri)
         - un exemplu parcurs **pe cod**
     - in fisierele unde se afla functiile de test si pe consola la rularea checker-ului apar numere diferite (testul 0 pe consola este testul 1 in input etc.)
