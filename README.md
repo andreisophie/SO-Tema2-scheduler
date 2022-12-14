@@ -47,6 +47,6 @@ Tema mi s-a parut deosebit de misto, insa are anumite defecte care o fac frustra
     - in fisierele unde se afla functiile de test si pe consola la rularea checker-ului apar numere diferite (testul 0 pe consola este testul 1 in input etc.)
     - laboratoarele de anul asta vizau exclusiv mecanisme de sincronizare in python, iar tema este in C :trollface:
 
-### Last words
+### Closing remarks
 
 Materia de SO este de departe cea mai interesanta si misto din semestrul acesta; de altfel, am participat la hackathon-ul de SO si mi-a placut la nebunie ceea ce am codat. De asemenea, cerintele erau explicate clar si concis, cu simt de raspundere, ca dovada ca se poate ca cerintele la aceasta materie sa fie clare si temele, placute.
